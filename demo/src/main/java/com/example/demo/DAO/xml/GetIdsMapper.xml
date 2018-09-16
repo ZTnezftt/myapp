@@ -1,0 +1,7 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.DAO.GetIdsDAO">
+    <select id="getids" resultType="com.example.demo.Bean.Title">
+        SELECT * FROM ids where id=#{id}
+    </select>
+</mapper>

@@ -1,0 +1,7 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.DAO.Key">
+    <select id="getKey" resultType="String">
+        SELECT mykey.value from mykey where userkey=#{key}
+    </select>
+</mapper>
