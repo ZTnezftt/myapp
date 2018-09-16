@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_below="@id/mainpager"
+        android:id="@+id/tuijian"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+        <android.support.v7.widget.CardView
+            android:id="@+id/mainfragmentc1"
+            android:layout_marginRight="7dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="120dp">
+            <TextView
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:text="这个季节该吃什么？"
+                android:background="@drawable/home_header_one"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:id="@+id/mainfragmentc2"
+            android:layout_marginLeft="7dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="120dp">
+            <TextView
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:text="本周美食推荐!"
+                android:background="@drawable/home_header_two"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+</RelativeLayout>

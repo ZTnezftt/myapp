@@ -1,1 +1,1 @@
-﻿Hello world2
+﻿这个项目包含服务端(Spring Boot)和安卓端(WhatSEat)

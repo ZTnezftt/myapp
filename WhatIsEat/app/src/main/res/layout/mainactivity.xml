@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardtitle"
+        app:cardCornerRadius="15dp"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+    <TextView
+        android:id="@+id/search_bar"
+        android:gravity="center"
+        android:background="@drawable/search"
+        android:text="点击这里搜索内容~"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+    </android.support.v7.widget.CardView>
+    <FrameLayout
+        android:layout_above="@id/cardtab"
+        android:layout_below="@id/cardtitle"
+        android:id="@+id/mainfragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
+    <android.support.v7.widget.CardView
+        app:cardCornerRadius="15dp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/cardtab"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+    <RadioGroup
+        android:id="@+id/maintab"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+            <RadioButton
+                android:textColor="@drawable/textchange"
+                android:id="@+id/shouye"
+                android:drawableTop="@drawable/sy1"
+                android:button="@null"
+                android:text="首页"
+                android:layout_width="0dp"
+                android:textSize="11sp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_horizontal|bottom" />
+            <RadioButton
+                android:textSize="11sp"
+                android:textColor="@drawable/textchange"
+                android:drawableTop="@drawable/fl1"
+                android:id="@+id/fenlei"
+                android:button="@null"
+                android:text="分类"
+                android:gravity="center_horizontal|bottom"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+            <RadioButton
+                android:textColor="@drawable/textchange"
+                android:drawableTop="@drawable/gd1"
+                android:id="@+id/more"
+                android:button="@null"
+                android:textSize="11sp"
+                android:text="更多"
+                android:gravity="center_horizontal|bottom"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+    </RadioGroup>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</RelativeLayout>
