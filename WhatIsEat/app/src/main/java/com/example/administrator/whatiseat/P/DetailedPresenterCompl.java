@@ -111,7 +111,7 @@ public class DetailedPresenterCompl implements IDetailedPresenter {
                 Log.i("de","未查询到数据,发送0");
                 writezan.beginTransaction();
                 try {
-                    writezan.execSQL("insert into zan values(?,0,?)",new String[]{String.valueOf(id),data.title});
+                    writezan.execSQL("insert into zan values(?,0,?,?)",new String[]{String.valueOf(id),data.title,data.albums[0]});
                     writezan.setTransactionSuccessful();
                 }catch (Exception e) {
 

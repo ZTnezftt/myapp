@@ -12,7 +12,7 @@ public class DataBase extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("create table history(name varchar(20) primary key)");
-        sqLiteDatabase.execSQL("create table zan(id varchar(20) primary key,value int,title varchar(20))");
+        sqLiteDatabase.execSQL("create table zan(id varchar(20) primary key,value int,title varchar(20),urls varchar(50))");
     }
 
     @Override
