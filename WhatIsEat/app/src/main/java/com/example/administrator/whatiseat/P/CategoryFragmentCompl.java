@@ -36,7 +36,8 @@ public class CategoryFragmentCompl implements ICategoryPresenter {
         Observable.create(new ObservableOnSubscribe<Map<String, List<Items>>>() {
             @Override
             public void subscribe(ObservableEmitter<Map<String, List<Items>>> emitter) throws Exception {
-                if (isfirst&&dbvalue==0) {
+                Log.i("c","isfirst="+isfirst+"    dbvalue="+dbvalue);
+                if (dbvalue==0) {
                     Log.i("category","network");
                     category_show_list.getCategroy(MyApplication.getInstance());
                 }else{
@@ -64,6 +65,7 @@ public class CategoryFragmentCompl implements ICategoryPresenter {
                 .subscribe(new io.reactivex.functions.Consumer<Boolean>() {
                     @Override
                     public void accept(Boolean aBoolean) throws Exception {
+                        Log.i("c","2");
                         SpUtil.putInt(MyApplication.getInstance(),"category",1);
                         setTitle(title);
                         setFragments(items);

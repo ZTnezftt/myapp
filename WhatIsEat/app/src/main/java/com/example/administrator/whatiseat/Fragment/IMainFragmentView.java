@@ -8,8 +8,7 @@ import com.trello.rxlifecycle2.LifecycleTransformer;
 import java.util.List;
 
 public interface IMainFragmentView<T> {
-    public void Click_Titile();
-    public void SetAdapter(List<T> list);
-    public void setToast(String str);
+    public void SetAdapter(List<T> list);//给fragment设置数据
+    public void setToast(String str);//设置toast
     public LifecycleTransformer rxlifecycle();
 }

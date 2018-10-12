@@ -23,7 +23,7 @@ import okhttp3.Response;
 public class Category_Show_List {
     private static Category_Show_List instance;
     private Boolean tag;
-    public  Map<String,List<Items>> category;
+    public  Map<String,List<Items>> category=new LinkedHashMap<>();
     private Category_Show_List(){
         tag=false;
     }
@@ -61,6 +61,7 @@ public class Category_Show_List {
                     items.setId(list.getId());
                     items.setName(list.getName());
                     iList.add(items);
+                    Log.i("c","11");
                 }
                 this.category.put(r.name, iList);
                 SpUtil.putString(context, "Category", gson.toJson(this, Category_Show_List.class));

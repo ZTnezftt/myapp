@@ -97,6 +97,7 @@ public class SearchView extends BaseActivity implements View.OnKeyListener,ISear
         return false;
     }
 
+    @Override
     public void toDirShow(){
         FragmentTransaction fragmentTransaction;
         String str=search.getText().toString();

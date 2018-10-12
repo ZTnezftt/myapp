@@ -51,7 +51,7 @@ public class CategoryFragment extends BaseFragment implements ICategoryFragmentV
         CardView Title=getActivity().findViewById(R.id.cardtitle);
         Title.setVisibility(View.VISIBLE);
         categoryFragmentCompl.getTitle(MyApplication.isFirst,SpUtil.getInt(getContext(),"category",0));
-        MyApplication.FirstOpen=false;
+        //MyApplication.FirstOpen=false;
         return view;
     }
     public void Init_Dagger2(){

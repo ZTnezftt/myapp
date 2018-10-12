@@ -50,7 +50,9 @@ public class ScAcitivityCompl implements IScAcitivityPresenter {
                     Log.i("sql","查询到数据");
                     Scitem scitem=new Scitem();
                     String id=cursor.getString(cursor.getColumnIndex("id"));
+                    Log.i("sql","id"+id);
                     String title=cursor.getString(cursor.getColumnIndex("title"));
+                    Log.i("sql","title"+title);
                     String urls=cursor.getString(cursor.getColumnIndex("urls"));
                     scitem.id=id;
                     scitem.title=title;

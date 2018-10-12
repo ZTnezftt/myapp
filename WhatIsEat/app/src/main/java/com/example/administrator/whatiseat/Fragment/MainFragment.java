@@ -134,11 +134,6 @@ public class MainFragment extends BaseFragment implements IMainFragmentView {
     }
 
     @Override
-    public void Click_Titile() {
-
-    }
-
-    @Override
     public void SetAdapter(List list) {
         tuiJianListAdapter.replace(list);
     }
