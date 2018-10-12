@@ -1,5 +1,6 @@
 package com.example.administrator.whatiseat.Activity;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -50,6 +51,15 @@ public class ScActivity extends BaseActivity implements IScActivity{
                 .build().inject(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(scAdapter);
+        scAdapter.CallBack(new ScAdapter.OnClick() {
+            @Override
+            public void Click(String id) {
+                Intent intent=new Intent();
+                intent.putExtra("ID",Integer.valueOf(id));
+                intent.setClass(ScActivity.this,DetailedActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
