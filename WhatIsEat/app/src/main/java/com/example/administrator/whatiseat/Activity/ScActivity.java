@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.administrator.whatiseat.Adapter.BurdenAdapter;
@@ -27,9 +28,11 @@ import javax.inject.Named;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ScActivity extends BaseActivity implements IScActivity{
     @BindView(R.id.de_Title) TextView title;
+    @BindView(R.id.TitleBack) ImageButton back;
     @BindView(R.id.scrv) RecyclerView recyclerView;
     @Inject ScAdapter scAdapter;
     @Named("LinearLayoutManager") @Inject RecyclerView.LayoutManager layoutManager;
@@ -71,5 +74,10 @@ public class ScActivity extends BaseActivity implements IScActivity{
     public LifecycleTransformer rxlifecycle() {
         LifecycleTransformer lifecycleTransformer = bindToLifecycle();
         return lifecycleTransformer;
+    }
+
+    @OnClick(R.id.TitleBack)
+    public void close(){
+        this.finishThis();
     }
 }
