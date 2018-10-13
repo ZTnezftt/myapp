@@ -1,0 +1,5 @@
+1.利用IDEA spring Initializr 创建spring boot项目
+	主要项目：spring-boot-starter-web
+	主要注解：@RestController @ResponseBody+@Controller使用此注解后，类被标记为Controller,说明这个类方法返回的全是数据.
+		  @xxxMapping 请求类型
+		  
