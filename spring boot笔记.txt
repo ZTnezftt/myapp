@@ -2,4 +2,44 @@
 	主要项目：spring-boot-starter-web
 	主要注解：@RestController @ResponseBody+@Controller使用此注解后，类被标记为Controller,说明这个类方法返回的全是数据.
 		  @xxxMapping 请求类型
+
+
+2.MyBatis 的配置（大部分配置文件可以直接复制使用）
+	pom.xml主要项目 mybatis-spring-boot-starter  MyBatis主要
+			mysql-connector-java  数据库驱动
+		 	c3p0  连接池
+	主要步骤：1.配置mybatis-config.xml
+
+		  2.配置DataSourceConfiguration类 通过这个类配置
+				1.jdbcDriver
+				2.jdbcurl
+				3.username
+				4.userpassword
+
+		    	主要注解: @Bean(name="dataSource")
+				  @Value("${xxx}")//访问application.properties值
+				  @Configuration //告诉spring容器检索这个类
+				  @MapperScan //扫描dao
+			主要方法: public ComboPooledDataSource creareDataSource(){}
+				  //1设置jdbcdriver  2设置jdbcurl  3设置用户名&密码  4其他
+
+		  3.配置SessionFactoryConfiguration类 通过这个类配置 (事物提交)
+				1.mybatisConfigFilepath //mybatis-config.xml路径
+				2.mapper_path //mapper路径
+				3.entity_package //entity路径
+			主要注解: @Bean(name="sqlSessionFactory")
+				  @Configuration
+			主要方法: public SqlSessionFactoryBean createsqlSessionFactoryBean(){}
+			//1设置mybatis-config.xml的路径  2设置mapper路径  3设置datasource  4设置entity包路径
+		  
+		  4.配置dao（接口）
+
+		  5.配置mapper（xml）
+
+3.Service层(实现复杂逻辑)
+	1.配置TransactionManagermentConfiguration 类 implements TransactionManagementConfigurer
+		主要注解 @Configuration
+			 @EnableTransactionManagement
+			 @Transactional //默认接受RuntimeException回滚
+	2.配置service详细逻辑
 		  
