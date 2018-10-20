@@ -60,7 +60,8 @@ public class MainFragment extends BaseFragment implements IMainFragmentView {
          */
         CardView Title = getActivity().findViewById(R.id.cardtitle);
         Title.setVisibility(View.VISIBLE);
-        DaggerMainFragmentFactroy.builder().mainFragmentAdapterModule(new MainFragmentAdapterModule(getActivity()))
+        DaggerMainFragmentFactroy.builder()
+                .mainFragmentAdapterModule(new MainFragmentAdapterModule(getActivity()))
                 .layoutManagerModule(new LayoutManagerModule(getActivity()))
                 .build().inject(this);
         recyclerView.setLayoutManager(layoutManager);

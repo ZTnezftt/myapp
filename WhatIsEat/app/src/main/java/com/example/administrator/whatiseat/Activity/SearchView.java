@@ -99,21 +99,14 @@ public class SearchView extends BaseActivity implements View.OnKeyListener,ISear
 
     @Override
     public void toDirShow(){
-        FragmentTransaction fragmentTransaction;
         String str=search.getText().toString();
         if (str.equals("")){
             Util.Toast("没有内容呢",this);
         }else {
             Log.i("Onkey", "" + str);
             searchViewCompl.toDB(str);
-            ListFragment listFragment2=new ListFragment();//因为要传入一个新的listfrag对象
-            fragmentTransaction = fragmentManager.beginTransaction();
-            Bundle bundle = new Bundle();
-            bundle.putString("str", str);
-            listFragment2.setArguments(bundle);
-            fragmentTransaction.replace(R.id.search_fragment, listFragment2);
-            fragmentTransaction.commit();
         }
+
     }
 
     @Override
@@ -127,9 +120,26 @@ public class SearchView extends BaseActivity implements View.OnKeyListener,ISear
         return lifecycleTransformer;
     }
 
+    @Override
+    public void toListView(String str) {
+        FragmentTransaction fragmentTransaction;
+        ListFragment listFragment2=new ListFragment();//因为要传入一个新的listfrag对象
+        fragmentTransaction = fragmentManager.beginTransaction();
+        Bundle bundle = new Bundle();
+        bundle.putString("str", str);
+        listFragment2.setArguments(bundle);
+        fragmentTransaction.replace(R.id.search_fragment, listFragment2);
+        fragmentTransaction.commit();
+    }
+
     @OnClick(R.id.cancel)
     public void Finish(){
         finishThis();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 
     @Override

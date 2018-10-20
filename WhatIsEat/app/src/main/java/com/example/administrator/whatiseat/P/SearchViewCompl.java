@@ -39,10 +39,8 @@ public class SearchViewCompl implements ISearchViewPresenter {
             public void subscribe(ObservableEmitter<Boolean> emitter) throws Exception {
                 try {
                     Log.i("db","入库");
-                    history.beginTransaction();
                     history.execSQL("insert into history values(?)",new String[]{s});
-                    history.setTransactionSuccessful();
-                    history.endTransaction();
+                    history.close();
                     emitter.onNext(true);
                 }catch (Exception e){
                     Log.e("dberror",e.getMessage());
@@ -61,6 +59,8 @@ public class SearchViewCompl implements ISearchViewPresenter {
                         }else{
                             Log.i("db",false+"");
                         }
+                        close();
+                        iSearchView.toListView(s);
                     }
                 });
     }
@@ -72,6 +72,9 @@ public class SearchViewCompl implements ISearchViewPresenter {
     @Override
     public LifecycleTransformer rxunbind() {
         return iSearchView.rxlifecycle();
+    }
+    public void close(){
+        history.close();
     }
 
 }

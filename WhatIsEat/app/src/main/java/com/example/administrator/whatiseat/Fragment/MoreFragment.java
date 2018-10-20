@@ -71,9 +71,13 @@ public class MoreFragment extends Fragment {
         });
     }
     public void set(){
-        MoreItem moreItem=new MoreItem();
-        moreItem.icon=R.drawable.sc;
-        moreItem.text="我的收藏";
-        moreItemAdapter.addItem(moreItem);
+        MoreItem moreItem1=new MoreItem();
+        moreItem1.icon=R.drawable.sc;
+        moreItem1.text="我的收藏";
+        MoreItem moreItem2=new MoreItem();
+        moreItem2.icon=R.drawable.gy;
+        moreItem2.text="关于";
+        moreItemAdapter.addItem(moreItem1);
+        moreItemAdapter.addItem(moreItem2);
     }
 }

@@ -75,9 +75,13 @@ public class ScActivity extends BaseActivity implements IScActivity{
         LifecycleTransformer lifecycleTransformer = bindToLifecycle();
         return lifecycleTransformer;
     }
-
     @OnClick(R.id.TitleBack)
     public void close(){
         this.finishThis();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 }

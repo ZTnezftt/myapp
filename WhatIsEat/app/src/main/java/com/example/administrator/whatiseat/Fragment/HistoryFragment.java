@@ -137,6 +137,12 @@ public class HistoryFragment extends Fragment implements IHistoryFragemntView {
     }
 
     @Override
+    public void onStop() {
+        historyFragmentCompl.close();
+        super.onStop();
+    }
+
+    @Override
     public void onDestroy() {
         historyFragmentCompl.close();
         super.onDestroy();
