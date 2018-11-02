@@ -67,6 +67,7 @@ public class WelCome extends BaseActivity {
                         if (aBoolean) {
                             SpUtil.putBoolean(getContext(), "FirstOpen", false);
                         }
+
                         Intent intent = new Intent(WelCome.this, Main.class);
                         startActivity(intent);
                     }

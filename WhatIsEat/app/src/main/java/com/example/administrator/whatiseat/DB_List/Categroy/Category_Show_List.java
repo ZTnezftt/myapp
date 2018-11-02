@@ -61,6 +61,7 @@ public class Category_Show_List {
                     items.setId(list.getId());
                     items.setName(list.getName());
                     iList.add(items);
+                    items=null;
                     Log.i("c","11");
                 }
                 this.category.put(r.name, iList);

@@ -95,5 +95,17 @@ public class CategoryFragment extends BaseFragment implements ICategoryFragmentV
         return bindToLifecycle();
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (title!=null){
+            title.clear();
+            title=null;
+        }
+        if (mFragments!=null){
+            mFragments.clear();
+            mFragments=null;
+        }
+    }
 }
 

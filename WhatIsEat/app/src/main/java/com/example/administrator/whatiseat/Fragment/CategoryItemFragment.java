@@ -56,4 +56,9 @@ public class CategoryItemFragment extends BaseFragment {
     interface putId{
         void getId(String id);
     }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+    }
 }
