@@ -61,7 +61,6 @@ public class MainFragmentModel{
                         return AdviseLRRequest.getLR("l");
                     }
                 })
-                .compose(iMainFragmentPresenter.rxunbind())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnNext(new Consumer<String>() {
                     @Override
@@ -80,7 +79,6 @@ public class MainFragmentModel{
                         return AdviseLRRequest.getLR("r");
                     }
                 })
-                .compose(iMainFragmentPresenter.rxunbind())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnNext(new Consumer<String>() {
                     @Override
@@ -100,7 +98,6 @@ public class MainFragmentModel{
                         return AdviseRequest.getAdvise();
                     }
                 })
-                .compose(iMainFragmentPresenter.rxunbind())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnNext(new Consumer<TuiJian>() {
                     @Override

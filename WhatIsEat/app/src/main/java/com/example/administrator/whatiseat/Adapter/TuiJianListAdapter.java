@@ -159,6 +159,9 @@ public class TuiJianListAdapter<T> extends RecyclerView.Adapter<RecyclerView.Vie
         }
         return null;
     }
+    public void removeall(){
+        list.clear();
+    }
     @Override
     public void addList(List list) {
         this.list.addAll(list);

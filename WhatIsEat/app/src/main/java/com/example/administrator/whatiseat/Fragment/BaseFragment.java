@@ -14,4 +14,5 @@ public class BaseFragment extends RxFragment {
     public void onDestroy() {
         super.onDestroy();
     }
+
 }

@@ -73,7 +73,6 @@ public class SearchView extends BaseActivity implements View.OnKeyListener,ISear
             bundle.putString("id",intent.getStringExtra("id"));
             listFragment.setArguments(bundle);
             FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.search_fragment,listFragment);
             fragmentTransaction.commit();
         }else {
             //否则就正常显示推荐和历史fragment

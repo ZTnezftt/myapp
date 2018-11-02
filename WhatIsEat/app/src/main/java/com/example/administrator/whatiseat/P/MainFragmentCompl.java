@@ -31,13 +31,12 @@ public class MainFragmentCompl implements IMainFragmentPresenter {//p
     public void SetAdapter() {
         if (mainList!=null) {
             iMainFragmentView.SetAdapter(mainList);
-        }else{
-
         }
     }
 
     @Override
     public void getList() {
+        mainList.clear();
         mainFragmentModel.getData();
         mainFragmentModel.putData(new MainFragmentModel.CallBack() {
             @Override

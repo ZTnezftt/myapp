@@ -1,12 +1,17 @@
 package com.example.administrator.whatiseat.Fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -30,14 +35,26 @@ import javax.inject.Named;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
 
 public class MainFragment extends BaseFragment implements IMainFragmentView {
     static Boolean firstStart = false;//判断是否首次打开页面
     @BindView(R.id.tuijianList) RecyclerView recyclerView;
+    @BindView(R.id.mf_sw) SwipeRefreshLayout refresh;
     @Inject TuiJianListAdapter tuiJianListAdapter;
     @Named("LinearLayoutManager") @Inject RecyclerView.LayoutManager layoutManager;
     MainFragmentCompl mainFragmentCompl = new MainFragmentCompl(this);/*持有p的对象*/
     Unbinder unbinder;/*销毁时解绑*/
+    Handler handler=new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            //tuiJianListAdapter.removeall();
+            mainFragmentCompl.getList();
+            refresh.setRefreshing(false);
+        }
+    };
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -60,6 +77,7 @@ public class MainFragment extends BaseFragment implements IMainFragmentView {
          */
         CardView Title = getActivity().findViewById(R.id.cardtitle);
         Title.setVisibility(View.VISIBLE);
+        refresh.setColorSchemeColors(Color.RED);
         DaggerMainFragmentFactroy.builder()
                 .mainFragmentAdapterModule(new MainFragmentAdapterModule(getActivity()))
                 .layoutManagerModule(new LayoutManagerModule(getActivity()))
@@ -89,6 +107,12 @@ public class MainFragment extends BaseFragment implements IMainFragmentView {
                 intent.setAction("android.intent.action.VIEW");
                 intent.setData(uri);
                 startActivity(intent);
+            }
+        });
+        refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                handler.sendEmptyMessage(1);
             }
         });
         /*

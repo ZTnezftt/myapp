@@ -48,6 +48,7 @@ public class CategoryFragmentCompl implements ICategoryPresenter {
                 emitter.onNext(category_show_list.category);
                 emitter.onComplete();
                 }})
+                .compose(iCategoryFragmentView.bindto())
                 .map(new Function<Map<String, List<Items>>, Boolean>() {
                     @Override
                     public Boolean apply(Map<String, List<Items>> stringListMap) throws Exception {

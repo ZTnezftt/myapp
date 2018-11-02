@@ -104,6 +104,7 @@ public class HistoryFragment extends Fragment implements IHistoryFragemntView {
             e.printStackTrace();
         }
     }
+
     @Override
     public String getTagValue(int position){
         String str="";
@@ -123,6 +124,7 @@ public class HistoryFragment extends Fragment implements IHistoryFragemntView {
         }
         return str;
     }
+
     @Override
     public void setHistroyView(List<String> list) {
         Log.i("v",list.size()+"");

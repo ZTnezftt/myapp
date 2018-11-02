@@ -23,6 +23,7 @@ import com.example.administrator.whatiseat.P.CategoryFragmentCompl;
 import com.example.administrator.whatiseat.R;
 import com.example.administrator.whatiseat.Util.SpUtil;
 import com.flyco.tablayout.SlidingTabLayout;
+import com.trello.rxlifecycle2.LifecycleTransformer;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -52,6 +53,7 @@ public class CategoryFragment extends BaseFragment implements ICategoryFragmentV
         Title.setVisibility(View.VISIBLE);
         categoryFragmentCompl.getTitle(MyApplication.isFirst,SpUtil.getInt(getContext(),"category",0));
         //MyApplication.FirstOpen=false;
+
         return view;
     }
     public void Init_Dagger2(){
@@ -63,6 +65,7 @@ public class CategoryFragment extends BaseFragment implements ICategoryFragmentV
         slidingTabLayout.setViewPager(viewPager);
 
     }
+
     @Override
     public void setTitile(List<String> list) {
         title=list;
@@ -85,6 +88,11 @@ public class CategoryFragment extends BaseFragment implements ICategoryFragmentV
     @Override
     public void setToast(String str) {
         Toast(str);
+    }
+
+    @Override
+    public LifecycleTransformer bindto() {
+        return bindToLifecycle();
     }
 
 }

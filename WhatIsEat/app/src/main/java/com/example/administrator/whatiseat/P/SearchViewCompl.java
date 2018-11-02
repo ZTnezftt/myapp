@@ -40,7 +40,6 @@ public class SearchViewCompl implements ISearchViewPresenter {
                 try {
                     Log.i("db","入库");
                     history.execSQL("insert into history values(?)",new String[]{s});
-                    history.close();
                     emitter.onNext(true);
                 }catch (Exception e){
                     Log.e("dberror",e.getMessage());
