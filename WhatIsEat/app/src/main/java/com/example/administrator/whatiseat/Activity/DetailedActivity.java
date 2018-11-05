@@ -2,8 +2,12 @@ package com.example.administrator.whatiseat.Activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -38,10 +42,12 @@ import butterknife.OnClick;
  */
 public class DetailedActivity extends BaseActivity implements IDetailedView {
     @BindView(R.id.shoucangtext) TextView deShouCangText;
-    @BindView(R.id.TitleBack) ImageButton TitleBack;
-    @BindView(R.id.de_Title) TextView deTitle;
+    @BindView(R.id.ctb) CollapsingToolbarLayout collapsingToolbarLayout;
+    //@BindView(R.id.TitleBack) ImageButton TitleBack;
+    //@BindView(R.id.de_Title) TextView deTitle;
+    @BindView(R.id.detoolbar) Toolbar toolbar;
     @BindView(R.id.de_albums) ImageView deAlbums;
-    @BindView(R.id.de_name) TextView deName;
+    //@BindView(R.id.de_name) TextView deName;
     @BindView(R.id.shoucang) ToggleButton deshoucang;
     @BindView(R.id.imtro) TextView deimtro;
     @BindView(R.id.de_burden) RecyclerView deburden;
@@ -67,6 +73,8 @@ public class DetailedActivity extends BaseActivity implements IDetailedView {
         detailedPresenterCompl=new DetailedPresenterCompl(this);/*持有P的对象*/
         detailedPresenterCompl.getDetailed();
     }
+
+
     /*
        初始化控件
      */
@@ -78,10 +86,16 @@ public class DetailedActivity extends BaseActivity implements IDetailedView {
                 .layoutManagerModule(new LayoutManagerModule(this))
                 .burdenModule(new BurdenModule(this))
                 .build().inject(this);
+        //toolbar.setSubtitleTextAppearance(this,R.style.Toolbar_TitleText);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         deburden.setLayoutManager(layoutManager);
         deburden.setAdapter(burdenAdapter);
         desteps.setLayoutManager(layoutManager2);
         desteps.setAdapter(stepAdapter);
+
         deshoucang.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -91,6 +105,12 @@ public class DetailedActivity extends BaseActivity implements IDetailedView {
                 }else {
                     Log.i("deshoucang","设置触发");
                 }
+            }
+        });
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finishThis();
             }
         });
     }
@@ -109,12 +129,16 @@ public class DetailedActivity extends BaseActivity implements IDetailedView {
 
     @Override
     public void setdename(String str) {
-        deName.setText(str);
+        //deName.setText(str);
     }
 
     @Override
     public void setdetitle(String str) {
-        deTitle.setText(str);
+        Log.i("title",str);
+        collapsingToolbarLayout.setTitle(str);
+        //getSupportActionBar().setTitle(str);
+        //deTitle.setText(str);
+        //toolbar.setTitle(str);
     }
 
     @Override
@@ -154,10 +178,10 @@ public class DetailedActivity extends BaseActivity implements IDetailedView {
         Toast(str);
     }
 
-    @OnClick(R.id.TitleBack)
+    /*@OnClick(R.id.TitleBack)
     public void back(){
         finishThis();
-    }
+    }*/
 }
 /*
  RxJava RxAndrodi 依赖版本************************一定******************************要一致rxjava2 retrofit2

@@ -33,6 +33,7 @@ public class CategoryFragmentCompl implements ICategoryPresenter {
     public void getTitle(final Boolean isfirst,final int dbvalue) {
         final List<String> title = new LinkedList<>();
         final List<List<Items>> items = new LinkedList<>();
+
         Observable.create(new ObservableOnSubscribe<Map<String, List<Items>>>() {
             @Override
             public void subscribe(ObservableEmitter<Map<String, List<Items>>> emitter) throws Exception {

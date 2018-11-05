@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.administrator.whatiseat.Bean.Banner_in;
 import com.example.administrator.whatiseat.Bean.TuiJian;
 import com.example.administrator.whatiseat.Bean.TuiJianItem;
@@ -58,8 +59,9 @@ public class TuiJianListAdapter<T> extends RecyclerView.Adapter<RecyclerView.Vie
         if (viewHolder instanceof ListHolder){
             Log.i("load","tuijian"+i);
             ((ListHolder) viewHolder).textView.setText(getTuiJian(i).getText());
-
-            Glide.with(context).load(getTuiJian(i).getUrls()).into(((ListHolder) viewHolder).imageView);
+            Glide.with(context).
+                    load(getTuiJian(i).getUrls()).
+                    into(((ListHolder) viewHolder).imageView);
             ((ListHolder) viewHolder).cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -118,7 +120,9 @@ public class TuiJianListAdapter<T> extends RecyclerView.Adapter<RecyclerView.Vie
         for (int i=0;i<banner.getSize()+2;i++){
             View view=LayoutInflater.from(context).inflate(R.layout.pageitem,viewGroup,false);
             pageimage=view.findViewById(R.id.PageImage);
-            Glide.with(context).load(banner.getBanner().getBanner().get(i)).into(pageimage);
+            Glide.with(context).
+                    load(banner.getBanner().getBanner().get(i)).
+                    into(pageimage);
             pageitem.add(view);
         }
         MainPagerAdapter mainPagerAdapter=new MainPagerAdapter(pageitem);

@@ -102,7 +102,9 @@ public class ListFragmentModel {
                                 Dir_Show_List advertise=new Dir_Show_List();
                                 advertise.setValue(0);
                                 lists.add(advertise);
+                                advertise=null;
                             }
+                            dir_show_list=null;
                         }
                         return lists;
                     }

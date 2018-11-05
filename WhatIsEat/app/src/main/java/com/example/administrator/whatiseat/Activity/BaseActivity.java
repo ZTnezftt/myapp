@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.administrator.whatiseat.Util.Util;
 import com.trello.rxlifecycle2.components.RxActivity;
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 import com.trello.rxlifecycle2.components.support.RxFragmentActivity;
 
 import java.util.HashMap;
@@ -15,7 +16,7 @@ import java.util.Map;
 
 import butterknife.ButterKnife;
 
-public class BaseActivity extends RxFragmentActivity {
+public class BaseActivity extends RxAppCompatActivity {
     public void finishThis(){
         this.finish();
     }
