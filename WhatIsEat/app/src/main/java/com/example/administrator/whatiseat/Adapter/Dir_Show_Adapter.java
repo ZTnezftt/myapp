@@ -41,7 +41,7 @@ public class Dir_Show_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder viewHolder, int i) {
         if (viewHolder instanceof ShowHolder){
             Log.i("load","加载了show"+i);
             final Dir_Show_List dir_show_list = dir_show_lists.get(i);
@@ -51,11 +51,10 @@ public class Dir_Show_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             ((ShowHolder) viewHolder).title.setText(dir_show_list.getTitle());
             ((ShowHolder) viewHolder).ingredients.setText(dir_show_list.getIngredients());
             ((ShowHolder) viewHolder).imtro.setText(dir_show_list.getImtro());
-
             ((ShowHolder) viewHolder).cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    getId.getId(Integer.valueOf(dir_show_list.getId()));
+                    getId.getId(Integer.valueOf(dir_show_list.getId()),((ShowHolder) viewHolder).albums);
                 }
             });
         }else{
@@ -115,7 +114,7 @@ public class Dir_Show_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
     }
     public interface GetId{
-        public void getId(int id);
+        public void getId(int id,ImageView imageView);
     }
     public void CallBack(GetId getId){
         this.getId=getId;

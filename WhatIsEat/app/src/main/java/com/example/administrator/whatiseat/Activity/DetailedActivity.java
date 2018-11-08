@@ -67,6 +67,7 @@ public class DetailedActivity extends BaseActivity implements IDetailedView {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detailedactivity);
+        postponeEnterTransition();
         ButterKnife.bind(this);
         init_Dagger2();
         this.id=getIntent().getIntExtra("ID",0);
@@ -153,6 +154,7 @@ public class DetailedActivity extends BaseActivity implements IDetailedView {
 
     @Override
     public void setdealbums(String url) {
+        supportStartPostponedEnterTransition();
         Glide.with(this)
                 .load(url)
                 .into(deAlbums);
@@ -162,6 +164,7 @@ public class DetailedActivity extends BaseActivity implements IDetailedView {
     public void setShouCangText(String str) {
         deShouCangText.setText("该菜品收获了 "+str+" 个赞~~~~");
     }
+
 
     @Override
     public void setToggle(Boolean b) {

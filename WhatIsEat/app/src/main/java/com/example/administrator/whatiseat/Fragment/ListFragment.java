@@ -1,17 +1,22 @@
 package com.example.administrator.whatiseat.Fragment;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
 import com.example.administrator.whatiseat.Activity.DetailedActivity;
 import com.example.administrator.whatiseat.Adapter.Dir_Show_Adapter;
 import com.example.administrator.whatiseat.Bean.Dir_Show_List;
@@ -135,10 +140,10 @@ public class ListFragment extends BaseFragment implements IListFragmentView{
 
         dir_show_adapter.CallBack(new Dir_Show_Adapter.GetId() {
             @Override
-            public void getId(int id) {
+            public void getId(int id, ImageView imageView) {
                 Intent intent=new Intent(getActivity(),DetailedActivity.class);
                 intent.putExtra("ID",id);
-                startActivity(intent);
+                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(getActivity(),imageView,"imtro").toBundle());
             }
         });
 

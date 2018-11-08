@@ -13,6 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
+                android:transitionName="imtro"
                 app:layout_collapseMode="parallax"
                 android:id="@+id/de_albums"
                 android:scaleType="centerCrop"
